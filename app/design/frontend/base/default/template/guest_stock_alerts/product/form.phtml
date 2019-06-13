@@ -1,0 +1,48 @@
+<?php /* @var $this RyaanAnthony_GuestStockAlerts_Block_Form */?>
+<p class="<?php echo $this->getHtmlClass() ?>">
+    <a href="#" id="guest-stock-alerts-link" title="<?php echo $this->escapeHtml($this->__($this->getSignupLabel())); ?>"><?php echo $this->escapeHtml($this->__($this->getSignupLabel())); ?></a>
+</p>
+<div id="guest-stock-alerts-form-results"></div>
+<div id="guest-stock-alerts-form" style="display:none;">
+    <div class="fieldset">
+        <input name="guest-stock-alerts[product_id]" value="<?php echo $this->getProduct()->getId() ?>" class="required-entry" type="hidden" />
+        <label for="field-name" class="required"><?php echo $this->__('Name') ?></label>
+        <div class="input-box">
+            <input name="guest-stock-alerts[name]" id="field-name" title="Name" class="input-text required-entry" type="text" />
+        </div>
+        <label for="field-email" class="required"><?php echo $this->__('Email') ?></label>
+        <div class="input-box">
+            <input name="guest-stock-alerts[email]" id="field-email" title="Email" class="input-text required-entry validate-email" type="email" />
+        </div>
+    </div>
+    <div class="buttons-set">
+        <button type="button" id="guest-stock-alerts-form-submit" class="button">
+            <span>
+                <span><?php echo $this->__('Notify Me') ?></span>
+            </span>
+        </button>
+    </div>
+    <script type="text/javascript">
+        //<![CDATA[
+        var guestStockAlertsForm = new VarienForm('guest-stock-alerts-form', true);
+
+        $('guest-stock-alerts-link').on('click', function(e) {
+            $('guest-stock-alerts-form').show();
+        });
+
+        $('guest-stock-alerts-form-submit').on('click', function(e) {
+            if (guestStockAlertsForm.validator.validate()) {
+                $j.ajax({
+                    url: "<?php echo $this->getFormAction(); ?>",
+                    type: "POST",
+                    data: $j('#guest-stock-alerts-form input').serialize(),
+                    success: function(data) {
+                        $j('#guest-stock-alerts-form-results').html(data);
+                        $j('#guest-stock-alerts-form input:visible').each(function() { this.value = null; });
+                    }
+                });
+            }
+        });
+        //]]>
+    </script>
+</div>

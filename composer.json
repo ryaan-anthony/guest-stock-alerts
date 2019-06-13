@@ -1,0 +1,10 @@
+{
+  "name": "ryaan-anthony/magento-guest-stock-alerts",
+  "description": "Override Magento's stock alerts to accept name/email from guest users.",
+  "type": "magento-module",
+  "config": {
+    "platform": {
+      "php": "7.2.0"
+    }
+  }
+}

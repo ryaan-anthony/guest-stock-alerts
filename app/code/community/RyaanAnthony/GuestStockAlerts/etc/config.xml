@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <RyaanAnthony_GuestStockAlerts>
+            <version>0.1.0</version>
+        </RyaanAnthony_GuestStockAlerts>
+    </modules>
+
+    <global>
+        <helpers>
+            <guest_stock_alerts>
+                <class>RyaanAnthony_GuestStockAlerts_Helper</class>
+            </guest_stock_alerts>
+        </helpers>
+        <blocks>
+            <guest_stock_alerts>
+                <class>RyaanAnthony_GuestStockAlerts_Block</class>
+            </guest_stock_alerts>
+
+            <!-- Rewrite the frontend link view to append a form -->
+            <productalert>
+                <rewrite>
+                    <product_view>RyaanAnthony_GuestStockAlerts_Block_Form</product_view>
+                </rewrite>
+            </productalert>
+
+            <!-- Rewrite the admin view to change stock alerts collection -->
+            <adminhtml>
+                <rewrite>
+                    <catalog_product_edit_tab_alerts_stock>RyaanAnthony_GuestStockAlerts_Block_Adminhtml_Alerts_Stock</catalog_product_edit_tab_alerts_stock>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+
+        <models>
+            <guest_stock_alerts>
+                <class>RyaanAnthony_GuestStockAlerts_Model</class>
+                <resourceModel>guest_stock_alerts_resource</resourceModel>
+            </guest_stock_alerts>
+            <guest_stock_alerts_resource>
+                <class>RyaanAnthony_GuestStockAlerts_Model_Resource</class>
+                <entities>
+                    <subscription>
+                        <table>guest_stock_alerts_subscription</table>
+                    </subscription>
+                </entities>
+            </guest_stock_alerts_resource>
+        </models>
+
+        <resources>
+            <guest_stock_alerts_setup>
+                <setup>
+                    <module>RyaanAnthony_GuestStockAlerts</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </guest_stock_alerts_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <guest_stock_alerts>
+                    <file>guest_stock_alerts.xml</file>
+                </guest_stock_alerts>
+            </updates>
+        </layout>
+
+        <routers>
+            <guest_stock_alerts>
+                <use>standard</use>
+                <args>
+                    <module>RyaanAnthony_GuestStockAlerts</module>
+                    <frontName>guest_stock_alerts</frontName>
+                </args>
+            </guest_stock_alerts>
+        </routers>
+    </frontend>
+</config>

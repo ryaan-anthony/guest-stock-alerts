@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <RyaanAnthony_GuestStockAlerts>
+            <active>true</active>
+            <codePool>community</codePool>
+        </RyaanAnthony_GuestStockAlerts>
+    </modules>
+</config>
