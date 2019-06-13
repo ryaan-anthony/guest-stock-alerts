@@ -36,4 +36,4 @@ Navigate to the product edit screen in the admin and click "Product Alerts" tab
 ### Roadmap
 
 - Send email to customers awaiting notification once item is back in stock
-­ Once email is sent, ensure that customer is removed from list
+- Once email is sent, ensure that customer is removed from list
